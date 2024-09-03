@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   const { prompt } = await req.json();
 
   const { object } = await generateObject({
-    model: openai(modelName),
+    model: openai(modelName, { structuredOutputs: true }),
     schema: RecipeSchema,
     prompt: `Recipe for ${prompt || "chocolate brownies"}`,
   });
